@@ -2,7 +2,7 @@
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 
 module load ci
-
+module add gcc/4.8.2
 echo "REPO_DIR is "
 echo $REPO_DIR
 echo "SRC_DIR is "
@@ -18,7 +18,7 @@ mkdir -p $SOFT_DIR
 
 #  Download the source file
 
-if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
+if [[ ! -s $SRC_DIR/$SOURCE_FILE ]] ; then
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
   wget ftp://ftp.hdfgroup.org/HDF5/current/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
@@ -28,5 +28,5 @@ fi
 echo "Unpacking the source code tarball at $SRC_DIR/$SOURCE_FILE"
 tar -xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cd $WORKSPACE/$NAME-$VERSION
-./configure --prefix=$SOFT_DIR --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-share
+./configure --prefix=$SOFT_DIR --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-shared
 make
