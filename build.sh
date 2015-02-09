@@ -28,5 +28,11 @@ fi
 echo "Unpacking the source code tarball at $SRC_DIR/$SOURCE_FILE"
 tar -xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 cd $WORKSPACE/$NAME-$VERSION
+FC=`which mpif90`
+if [ -z $FC ] ; then
+  echo "Couldn't find an MPIF90 compiler"
+  echo "bailing out"
+  exit 1;
+fi
 ./configure --prefix=$SOFT_DIR --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-shared
 make
