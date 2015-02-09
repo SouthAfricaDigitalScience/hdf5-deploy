@@ -34,5 +34,6 @@ if [ -z $FC ] ; then
   echo "bailing out"
   exit 1;
 fi
-./configure --prefix=$SOFT_DIR --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-shared
-make
+#./configure --prefix=$SOFT_DIR --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-shared
+#make
+cmake -G"Unix Makefiles" -DBUILD_SHARED_LIBS:BOOL=TRUE -DHDF5_BUILD_CPP_LIB:BOOL=FALSE -DHDF5_BUILD_FORTRAN:BOOL=TRUE -DHDF5_ENABLE_PARALLEL:BOOL=TRUE -DCMAKE_INSTALL_PREFIX:PATH=$SOFT_DIR
