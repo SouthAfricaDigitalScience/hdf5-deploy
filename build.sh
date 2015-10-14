@@ -1,5 +1,5 @@
 #!/bin/bash -e
-SOURCE_FILE=$NAME-$VERSION.tar.gz
+SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
 module load ci
 module add gcc/4.8.2
@@ -23,7 +23,7 @@ mkdir -p $SOFT_DIR
 if [[ ! -s $SRC_DIR/$SOURCE_FILE ]] ; then
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
-  wget ftp://ftp.hdfgroup.org/HDF5/current/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+  wget ftp://ftp.hdfgroup.org/HDF5/releases/${NAME}-${VERSION}/src/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
 else
   echo "continuing from previous builds, using source at " $SRC_DIR/$SOURCE_FILE
 fi
