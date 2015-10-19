@@ -48,7 +48,6 @@ H5CXXFLAGS="I${OPENMPI_DIR}/include" \
 ./configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION} \
 --enable-parallel \
---enable-cxx \
 --enable-fortran \
 --enable-unsupported \
 --enable-shared
