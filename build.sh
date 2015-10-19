@@ -4,6 +4,7 @@ SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
 module load ci
 module add gcc/${GCC_VERSION}
+module add openmpi/1.8.8-gcc-${GCC_VERSION}
 #module add cmake
 
 echo "REPO_DIR is "
@@ -37,6 +38,6 @@ if [ -z $FC ] ; then
   echo "bailing out"
   exit 1;
 fi
-./configure --prefix=${SOFT_DIR}-gcc-${GCC_VERSION} --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-shared
+FFLAGS="-I${OPENMPI_DIR}/include" CFLAGS="-I${OPENMPI_DIR}/include" ./configure --prefix=${SOFT_DIR}-gcc-${GCC_VERSION} --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-shared
 make -j8
 #cmake -G"Unix Makefiles" -DBUILD_SHARED_LIBS:BOOL=TRUE -DHDF5_BUILD_CPP_LIB:BOOL=FALSE -DHDF5_BUILD_FORTRAN:BOOL=TRUE -DHDF5_ENABLE_PARALLEL:BOOL=TRUE -DCMAKE_INSTALL_PREFIX:PATH=$SOFT_DIR
