@@ -29,7 +29,7 @@ else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
 echo "Unpacking the source code tarball at ${SRC_DIR}/${SOURCE_FILE}"
-tar -xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}/gcc-${GCC_VERSION}
+tar -xz --keep-newer-files -f ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}/gcc-${GCC_VERSION}
 cd ${WORKSPACE}/gcc-${GCC_VERSION}/${NAME}-${VERSION}
 FC=`which mpif90`
 if [ -z $FC ] ; then
@@ -38,5 +38,5 @@ if [ -z $FC ] ; then
   exit 1;
 fi
 ./configure --prefix=${SOFT_DIR}-gcc-${GCC_VERSION} --enable-parallel   --enable-cxx --enable-fortran --enable-unsupported --enable-shared
-make
+make -j8
 #cmake -G"Unix Makefiles" -DBUILD_SHARED_LIBS:BOOL=TRUE -DHDF5_BUILD_CPP_LIB:BOOL=FALSE -DHDF5_BUILD_FORTRAN:BOOL=TRUE -DHDF5_ENABLE_PARALLEL:BOOL=TRUE -DCMAKE_INSTALL_PREFIX:PATH=$SOFT_DIR
