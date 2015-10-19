@@ -3,7 +3,7 @@ source /usr/share/modules/init/bash
 module load ci
 echo ""
 module load gcc/${GCC_VERSION}
-cd $WORKSPACE/${NAME}-${VERSION}
+cd ${WORKSPACE}/gcc-${GCC_VERSION}/${NAME}-${VERSION}
 make check
 echo $?
 
@@ -21,8 +21,8 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION."
-setenv       FFTW_VERSION       $VERSION
-setenv       FFTW_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       HDF5_VERSION       $VERSION
+setenv       HDF5_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(FFTW_DIR)/lib
 prepend-path FFTW_INCLUDE_DIR   $::env(FFTW_DIR)/include
 prepend-path CPATH             $::env(FFTW_DIR)/include
