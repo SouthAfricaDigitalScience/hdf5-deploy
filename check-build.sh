@@ -23,7 +23,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       HDF5_VERSION       $VERSION
-setenv       HDF5_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       HDF5_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/${NAME}/${VERSION}-gcc-${GCC_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(HDF5_DIR)/lib
 prepend-path HDF5_INCLUDE_DIR   $::env(HDF5_DIR)/include
 prepend-path CPATH             $::env(HDF5_DIR)/include
