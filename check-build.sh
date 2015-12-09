@@ -1,14 +1,14 @@
-#!/bin/bash
-source /usr/share/modules/init/bash
+#!/bin/bash -e
+. /etc/profile.d/modules.sh
 module load ci
 echo ""
-module load gcc/${GCC_VERSION}
+module add gcc/${GCC_VERSION}
 module add openmpi/1.8.8-gcc-${GCC_VERSION}
-cd ${WORKSPACE}/gcc-${GCC_VERSION}/${NAME}-${VERSION}
+cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 make check
 echo $?
 
-make install # DESTDIR=$SOFT_DIR
+make install
 
 mkdir -p modules
 (
@@ -21,26 +21,25 @@ proc ModulesHelp { } {
     puts stderr "       that the [module-info name] module is not available"
 }
 
+module add gcc/${GCC_VERSION}
+module add openmpi/1.8.8-gcc-${GCC_VERSION}
+
 module-whatis   "$NAME $VERSION."
 setenv       HDF5_VERSION       $VERSION
-setenv       HDF5_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+setenv       HDF5_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(HDF5_DIR)/lib
 prepend-path HDF5_INCLUDE_DIR   $::env(HDF5_DIR)/include
 prepend-path CPATH             $::env(HDF5_DIR)/include
 MODULE_FILE
-) > modules/${VERSION}-gcc-${GCC_VERSION}
+) > modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
-cp modules/${VERSION}-gcc-${GCC_VERSION} ${LIBRARIES_MODULES}/${NAME}
+cp modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${LIBRARIES_MODULES}/${NAME}
 
 module avail
-#module add  openmpi-x86_64
-module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
-cd $WORKSPACE
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+cd ${WORKSPACE}
 
 echo "Working directory is $PWD with : "
 ls
 echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
-echo "Compiling serial code"
-# www.hdfgroup.org/ftp/HDF5/current/src/unpacked/c++/examples/h5tutr_crtdat.cpp
-echo "just kidding."
