@@ -61,7 +61,7 @@ FFLAGS="-I${OPENMPI_DIR}/include" \
 CFLAGS="-I${OPENMPI_DIR}/include" \
 CXXFLAGS="-I${OPENMPI_DIR}/include/" \
 H5CXXFLAGS="I${OPENMPI_DIR}/include" \
-cd ${BUILD_NUMBER}
+cd build-${BUILD_NUMBER}
 ../configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \
