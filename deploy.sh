@@ -1,6 +1,9 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
 module add deploy
+module add gmp
+module add mpfr
+module add mpc
 module add gcc/${GCC_VERSION}
 module add zlib
 module add opempi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
