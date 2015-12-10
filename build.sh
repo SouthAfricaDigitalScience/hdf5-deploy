@@ -65,7 +65,6 @@ cd build-${BUILD_NUMBER}
 ../configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \
-#--enable-fortran \
 --enable-unsupported \
 --enable-shared \
 --with-zlib=${ZLIB_DIR}
