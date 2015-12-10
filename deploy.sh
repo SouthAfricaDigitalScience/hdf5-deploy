@@ -22,7 +22,7 @@ H5CXXFLAGS="I${OPENMPI_DIR}/include" \
 --enable-unsupported \
 --enable-shared \
 --with-zlib=${ZLIB_DIR}
-make
+make -j2 
 make install
 
 mkdir -p modules
