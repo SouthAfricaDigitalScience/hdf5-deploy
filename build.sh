@@ -45,7 +45,7 @@ else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
 echo "Unpacking the source code tarball at ${SRC_DIR}/${SOURCE_FILE}"
-tar -xz --keep-newer-files -f ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}/gcc-${GCC_VERSION}
+tar -xz --keep-newer-files -f ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 mkdir -p build-${BUILD_NUMBER}
 FC=`which mpif90`
@@ -61,6 +61,7 @@ FFLAGS="-I${OPENMPI_DIR}/include" \
 CFLAGS="-I${OPENMPI_DIR}/include" \
 CXXFLAGS="-I${OPENMPI_DIR}/include/" \
 H5CXXFLAGS="I${OPENMPI_DIR}/include" \
+cd ${BUILD_NUMBER}
 ../configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \
@@ -68,5 +69,5 @@ H5CXXFLAGS="I${OPENMPI_DIR}/include" \
 --enable-unsupported \
 --enable-shared \
 --with-zlib=${ZLIB_DIR}
-make -j2 
+make -j2
 #cmake -G"Unix Makefiles" -DBUILD_SHARED_LIBS:BOOL=TRUE -DHDF5_BUILD_CPP_LIB:BOOL=FALSE -DHDF5_BUILD_FORTRAN:BOOL=TRUE -DHDF5_ENABLE_PARALLEL:BOOL=TRUE -DCMAKE_INSTALL_PREFIX:PATH=$SOFT_DIR
