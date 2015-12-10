@@ -12,17 +12,17 @@ rm -rf *
 FC=`which mpif90` \
 CC=`which mpicc` \
 CXX=`which mpicxx` \
-FFLAGS="-I${OPENMPI_DIR}/include" \
-CFLAGS="-I${OPENMPI_DIR}/include" \
-CXXFLAGS="-I${OPENMPI_DIR}/include/" \
-H5CXXFLAGS="I${OPENMPI_DIR}/include" \
+FFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
+CFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
+CXXFLAGS="-I${OPENMPI_DIR}/include/ -L${OPENMPI_DIR}/lib" \
+H5CXXFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
 ../configure \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \
 --enable-unsupported \
 --enable-shared \
 --with-zlib=${ZLIB_DIR}
-make -j2 
+make -j2
 make install
 
 mkdir -p modules
