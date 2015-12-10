@@ -11,7 +11,7 @@ module add openmpi/1.8.8-gcc-${GCC_VERSION}
 echo "checking whether we can compile mpi programs with"
 which mpif90
 
-mpif90 sample-hdf5.f90 -o f.out
+mpif90 sample-mpio.f90 -o f.out
 mpirun -np 8 f.out
 
 echo "REPO_DIR is "
