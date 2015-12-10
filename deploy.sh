@@ -6,7 +6,7 @@ module add mpfr
 module add mpc
 module add gcc/${GCC_VERSION}
 module add zlib
-module add opempi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 echo "Starting deploy.sh"
 cd ${WORKSPACE}/build-${BUILD_NUMBER}
