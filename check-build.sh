@@ -24,7 +24,7 @@ proc ModulesHelp { } {
 }
 
 module add gcc/${GCC_VERSION}
-module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 module-whatis   "$NAME $VERSION."
 setenv       HDF5_VERSION       $VERSION
