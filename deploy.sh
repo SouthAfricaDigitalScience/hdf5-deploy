@@ -6,10 +6,11 @@ module add mpfr
 module add mpc
 module add gcc/${GCC_VERSION}
 module add zlib
+module add torque/2.5.13-gcc-${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 echo "Starting deploy.sh"
-cd ${WORKSPACE}/build-${BUILD_NUMBER}
+cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 make distclean
 rm -rf *
 FC=`which mpif90` \
@@ -38,9 +39,13 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
-
+module add gmp
+module add mpfr
+module add mpc
 module add gcc/${GCC_VERSION}
-module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add zlib
+module add torque/2.5.13-gcc-${GCC_VERSION}
+module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 module-whatis   "$NAME $VERSION. Build for GCC ${GCC_VERSION} with OpenMPI ${OPENMPI_VERSION}"
 setenv       HDF5_VERSION       $VERSION

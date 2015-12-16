@@ -1,5 +1,6 @@
 #!/bin/bash -e
-source /usr/share/modules/init/bash
+. /etc/profile.d/modules.sh
+
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
 module load ci
