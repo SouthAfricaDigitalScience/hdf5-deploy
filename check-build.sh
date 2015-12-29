@@ -2,6 +2,12 @@
 . /etc/profile.d/modules.sh
 module load ci
 echo ""
+module add deploy
+module add gmp
+module add mpfr
+module add mpc
+module add zlib
+module add bzip2
 module add gcc/${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
