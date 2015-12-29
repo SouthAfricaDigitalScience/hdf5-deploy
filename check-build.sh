@@ -3,7 +3,7 @@
 module load ci
 echo ""
 module add gcc/${GCC_VERSION}
-module add openmpi/1.8.8-gcc-${GCC_VERSION}
+module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 # disabling make check since this puts a huge load on the machines
 # see http://stackoverflow.com/questions/23734729/open-mpi-virtual-timer-expired
