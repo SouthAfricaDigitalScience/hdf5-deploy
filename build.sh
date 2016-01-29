@@ -6,7 +6,7 @@ SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 module load ci
 module add gcc/${GCC_VERSION}
 module add zlib
-module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add ${MPI_FLAVOUR}-gcc-${GCC_VERSION}
 #module add cmake
 
 echo "checking whether we can compile mpi programs with"
