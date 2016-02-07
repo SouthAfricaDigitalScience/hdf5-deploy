@@ -6,7 +6,7 @@ SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 module load ci
 module add gcc/${GCC_VERSION}
 module add zlib
-module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add mpich/${MPICH_VERSION}-gcc-${GCC_VERSION}
 #module add cmake
 module list
 echo "checking whether we can compile mpi programs with"
@@ -59,12 +59,12 @@ cd build-${BUILD_NUMBER}
 FC=`which mpif90` \
 CC=`which mpicc` \
 CXX=`which mpicxx` \
-FFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
-CFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
-CXXFLAGS="-I${OPENMPI_DIR}/include/ -L${OPENMPI_DIR}/lib" \
-H5CXXFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
+FFLAGS="-I${MPICH_DIR}/include -L${MPICH_DIR}/lib" \
+CFLAGS="-I${MPICH_DIR}/include -L${mpich_DIR}/lib" \
+CXXFLAGS="-I${MPICH_DIR}/include/ -L${MPICH_DIR}/lib" \
+H5CXXFLAGS="-I${MPICH_DIR}/include -L${MPICH_DIR}/lib" \
 ../configure \
---prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
+--prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${MPICH_VERSION} \
 --enable-parallel \
 --enable-unsupported \
 --enable-shared \

@@ -8,7 +8,7 @@ module add mpc
 module add zlib
 module add bzip2
 module add gcc/${GCC_VERSION}
-module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add mpich/3.2-gcc-${GCC_VERSION}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 # disabling make check since this puts a huge load on the machines
 # see http://stackoverflow.com/questions/23734729/open-mpi-virtual-timer-expired
@@ -29,23 +29,23 @@ proc ModulesHelp { } {
 }
 
 module add gcc/${GCC_VERSION}
-module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add mpich/3.2-gcc-${GCC_VERSION}
 
 module-whatis   "$NAME $VERSION."
 setenv       HDF5_VERSION       $VERSION
-setenv       HDF5_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+setenv       HDF5_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${MPICH_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(HDF5_DIR)/lib
-prepend-path PATH              $::env(HDF5_DIR)/bin
 prepend-path HDF5_INCLUDE_DIR   $::env(HDF5_DIR)/include
+prepend-path PATH              $::env(HDF5_DIR)/bin
 prepend-path CPATH             $::env(HDF5_DIR)/include
 MODULE_FILE
-) > modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+) > modules/${VERSION}-gcc-${GCC_VERSION}-mpich
 
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
-cp modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${LIBRARIES_MODULES}/${NAME}
+cp modules/${VERSION}-gcc-${GCC_VERSION}-mpich ${LIBRARIES_MODULES}/${NAME}
 
 module avail
-module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpich
 cd ${WORKSPACE}
 
 echo "Working directory is $PWD with : "
