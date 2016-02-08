@@ -6,7 +6,7 @@ SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 module load ci
 module add gcc/${GCC_VERSION}
 module add zlib
-module add mpich/${MPICH_VERSION}-gcc-${GCC_VERSION}
+module add mpich/3.2-gcc-${GCC_VERSION}
 #module add cmake
 module list
 echo "checking whether we can compile mpi programs with"
