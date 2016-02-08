@@ -7,7 +7,7 @@ module add mpc
 module add gcc/${GCC_VERSION}
 module add zlib
 module add torque/2.5.13-gcc-${GCC_VERSION}
-module add  mpich/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
+module add  openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 echo "Starting deploy.sh"
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}

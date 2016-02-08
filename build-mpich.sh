@@ -13,7 +13,7 @@ echo "checking whether we can compile mpi programs with"
 which mpif90
 
 mpif90 sample-mpio.f90 -o f.out
-mpirun -np 8 f.out
+mpiexec -np 8 $PWD/f.out
 
 echo "REPO_DIR is "
 echo $REPO_DIR
