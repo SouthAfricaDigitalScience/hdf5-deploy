@@ -51,6 +51,7 @@ module-whatis   "$NAME $VERSION. Build for GCC ${GCC_VERSION} with OpenMPI ${OPE
 setenv       HDF5_VERSION       $VERSION
 setenv       HDF5_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(HDF5_DIR)/lib
+prepend-path PATH              $::env(HDF5_DIR)/bin
 prepend-path HDF5_INCLUDE_DIR   $::env(HDF5_DIR)/include
 prepend-path CPATH             $::env(HDF5_DIR)/include
 MODULE_FILE
