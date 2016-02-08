@@ -21,7 +21,7 @@ CFLAGS="-I${MPICH_DIR}/include -L${MPICH_DIR}/lib" \
 CXXFLAGS="-I${MPICH_DIR}/include/ -L${MPICH_DIR}/lib" \
 H5CXXFLAGS="-I${MPICH_DIR}/include -L${MPICH_DIR}/lib" \
 ../configure \
---prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${MPICH_VERSION} \
+--prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpich \
 --enable-parallel \
 --enable-unsupported \
 --enable-shared \
