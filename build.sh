@@ -12,7 +12,7 @@ echo "checking whether we can compile mpi programs with"
 which mpif90
 
 mpif90 sample-mpio.f90 -o f.out
-mpirun -np 8 f.out
+mpirun -np 1 f.out
 
 echo "REPO_DIR is "
 echo $REPO_DIR
@@ -68,5 +68,5 @@ H5CXXFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
 --enable-unsupported \
 --enable-shared \
 # --with-zlib=${ZLIB_DIR}
-make -j2
+make
 #cmake -G"Unix Makefiles" -DBUILD_SHARED_LIBS:BOOL=TRUE -DHDF5_BUILD_CPP_LIB:BOOL=FALSE -DHDF5_BUILD_FORTRAN:BOOL=TRUE -DHDF5_ENABLE_PARALLEL:BOOL=TRUE -DCMAKE_INSTALL_PREFIX:PATH=$SOFT_DIR

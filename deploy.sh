@@ -23,8 +23,8 @@ H5CXXFLAGS="-I${OPENMPI_DIR}/include -L${OPENMPI_DIR}/lib" \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-parallel \
 --enable-unsupported \
---enable-shared \
-make -j2
+--enable-shared
+make
 make install
 
 mkdir -p modules
@@ -64,3 +64,5 @@ cd ${WORKSPACE}
 echo "Working directory is $PWD with : "
 ls
 echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
+
+which mpirun
