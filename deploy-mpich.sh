@@ -5,7 +5,7 @@ module add gmp
 module add mpfr
 module add mpc
 module add gcc/${GCC_VERSION}
-module add torque/2.5.13-gcc-${GCC_VERSION}
+#module add torque/2.5.13-gcc-${GCC_VERSION}
 module add  mpich/3.2-gcc-${GCC_VERSION}
 
 echo "Starting deploy.sh"
@@ -24,7 +24,7 @@ H5CXXFLAGS="-I${MPICH_DIR}/include -L${MPICH_DIR}/lib" \
 --enable-parallel \
 --enable-unsupported \
 --enable-shared \
---with-zlib=${ZLIB_DIR}
+# --with-zlib=${ZLIB_DIR}
 make -j2
 make install
 
