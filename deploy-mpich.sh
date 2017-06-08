@@ -23,9 +23,9 @@ H5CXXFLAGS="-I${MPICH_DIR}/include -L${MPICH_DIR}/lib" \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpich \
 --enable-parallel \
 --enable-unsupported \
---enable-shared \
+--enable-shared
 # --with-zlib=${ZLIB_DIR}
-make -j2
+make
 make install
 
 mkdir -p modules

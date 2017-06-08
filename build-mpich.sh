@@ -66,6 +66,6 @@ H5CXXFLAGS="-I${MPICH_DIR}/include -L${MPICH_DIR}/lib" \
 --prefix=${SOFT_DIR}-gcc-${GCC_VERSION}-mpich \
 --enable-parallel \
 --enable-unsupported \
---enable-shared \
-make -j2
+--enable-shared
+make
 #cmake -G"Unix Makefiles" -DBUILD_SHARED_LIBS:BOOL=TRUE -DHDF5_BUILD_CPP_LIB:BOOL=FALSE -DHDF5_BUILD_FORTRAN:BOOL=TRUE -DHDF5_ENABLE_PARALLEL:BOOL=TRUE -DCMAKE_INSTALL_PREFIX:PATH=$SOFT_DIR
